@@ -36,6 +36,28 @@ mongoose
 
 		let res = await Recipe.find({ title: 'Tiramisu' });
 		console.log(res[0].title);
+
+		//Iteration 4 - Update recipe
+
+		let response = await Recipe.findOneAndUpdate(
+			{title: "Rigatoni alla Genovese"},
+			{duration: 100},
+			{new:true}
+			
+			)
+			console.log(response)
+		
+			// Iteration 5 - Remove a recipe
+
+		let deleted = await Recipe.deleteOne(
+			{title: "Carrot Cake"}
+		)
+		console.log(deleted)
+
+		// Iteration 6 - Close the Database
+
+		mongoose.disconnect()
+
 	})
 	.catch((error) => {
 		console.error('Error connecting to the database', error);
